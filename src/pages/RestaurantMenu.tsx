@@ -256,7 +256,7 @@ const restaurants = [
           },
           {
             id: 903,
-1 name: 'Berry Antioxidant',
+            name: 'Berry Antioxidant',
             description: 'Mixed berries, pomegranate, and apple',
             price: 8.99,
             image: 'https://images.unsplash.com/photo-1600271886742-f049cd451bba'
