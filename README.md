@@ -1,69 +1,75 @@
-# Welcome to your Lovable project
+# Welcome to Your Project
 
-## Project info
+## Project Info
 
-**URL**: https://lovable.dev/projects/ecee2ff6-53d3-46ac-ad9c-699a1b730e4e
+**URL:** [https://dine-and-order-breeze.vercel.app/](https://dine-and-order-breeze.vercel.app/)
 
-## How can I edit this code?
+## How Can I Edit This Code?
 
-There are several ways of editing your application.
+There are several ways to edit and work on this project:
 
-**Use Lovable**
+### Use Your Preferred IDE
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/ecee2ff6-53d3-46ac-ad9c-699a1b730e4e) and start prompting.
+If you want to work locally using your own development environment, follow these steps:
 
-Changes made via Lovable will be committed automatically to this repo.
+1. **Clone the repository**
 
-**Use your preferred IDE**
+   ```sh
+   git clone <YOUR_GIT_URL>
+   ```
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+2. **Navigate to the project directory**
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+   ```sh
+   cd <YOUR_PROJECT_NAME>
+   ```
 
-Follow these steps:
+3. **Install the necessary dependencies**
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+   ```sh
+   npm i
+   ```
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+4. **Start the development server** (for live preview and auto-reloading)
 
-# Step 3: Install the necessary dependencies.
-npm i
+   ```sh
+   npm run dev
+   ```
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
-
-**Edit a file directly in GitHub**
+### Edit Files Directly in GitHub
 
 - Navigate to the desired file(s).
 - Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+- Make your changes and commit them.
 
-**Use GitHub Codespaces**
+### Use GitHub Codespaces
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
+- Go to your repository’s main page.
+- Click on the "Code" button (green button) at the top right.
 - Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+- Click on "New Codespace" to launch a new development environment.
+- Edit files directly and commit your changes when done.
 
-## What technologies are used for this project?
+## Technologies Used
 
-This project is built with .
+This project is built with:
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+- **Vite**
+- **TypeScript**
+- **React**
 
-## How can I deploy this project?
 
-Simply open [Lovable](https://lovable.dev/projects/ecee2ff6-53d3-46ac-ad9c-699a1b730e4e) and click on Share -> Publish.
+- **Tailwind CSS**
 
-## I want to use a custom domain - is that possible?
+## How Can I Deploy This Project?
 
-We don't support custom domains (yet). If you want to deploy your project under your own domain then we recommend using Netlify. Visit our docs for more details: [Custom domains](https://docs.lovable.dev/tips-tricks/custom-domain/)
+You can deploy the project using platforms like **Netlify** or **Vercel** for easy hosting and continuous deployment.
+
+### Custom Domains
+
+We don't support custom domains (yet). If you want to deploy your project under your own domain, then we recommend using **Netlify** or **Vercel** and configuring your domain settings there.
+
+---
+
+Happy coding! 🚀
+
