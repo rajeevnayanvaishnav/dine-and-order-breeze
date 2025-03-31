@@ -36,9 +36,9 @@ export function Navbar() {
           <div className="flex items-center">
             <Link
               to="/"
-              className="text-xl font-semibold flex items-center gap-2 text-gray-900"
+              className="text-xl font-bold flex items-center gap-2 text-gray-900"
             >
-              <span className="text-primary">Breeze</span> Dine & Order
+              <span className="text-[#FF3008]">Door</span>Dash
             </Link>
           </div>
 
@@ -85,7 +85,7 @@ export function Navbar() {
             <Link to="/cart" className="ml-3">
               <Button variant="outline" size="icon" className="relative" aria-label="Shopping cart">
                 <ShoppingCart className="h-5 w-5" />
-                <span className="absolute -top-2 -right-2 bg-accent text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
+                <span className="absolute -top-2 -right-2 bg-[#FF3008] text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
                   0
                 </span>
               </Button>
@@ -97,13 +97,13 @@ export function Navbar() {
             <Link to="/cart" className="mr-3">
               <Button variant="outline" size="icon" className="relative" aria-label="Shopping cart">
                 <ShoppingCart className="h-5 w-5" />
-                <span className="absolute -top-2 -right-2 bg-accent text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
+                <span className="absolute -top-2 -right-2 bg-[#FF3008] text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
                   0
                 </span>
               </Button>
             </Link>
             <button
-              className="text-gray-700 hover:text-primary focus:outline-none"
+              className="text-gray-700 hover:text-[#FF3008] focus:outline-none"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               aria-label="Menu"
             >
@@ -128,7 +128,7 @@ export function Navbar() {
             to="/"
             className={`py-3 px-4 rounded-lg ${
               location.pathname === '/'
-                ? 'bg-primary/10 text-primary'
+                ? 'bg-[#FF3008]/10 text-[#FF3008]'
                 : 'text-gray-700 hover:bg-gray-100'
             }`}
           >
@@ -138,7 +138,7 @@ export function Navbar() {
             to="/restaurants"
             className={`py-3 px-4 rounded-lg ${
               location.pathname === '/restaurants'
-                ? 'bg-primary/10 text-primary'
+                ? 'bg-[#FF3008]/10 text-[#FF3008]'
                 : 'text-gray-700 hover:bg-gray-100'
             }`}
           >
@@ -148,7 +148,7 @@ export function Navbar() {
             to="/login"
             className={`py-3 px-4 rounded-lg ${
               location.pathname === '/login'
-                ? 'bg-primary/10 text-primary'
+                ? 'bg-[#FF3008]/10 text-[#FF3008]'
                 : 'text-gray-700 hover:bg-gray-100'
             }`}
           >
@@ -158,7 +158,7 @@ export function Navbar() {
             to="/register"
             className={`py-3 px-4 rounded-lg ${
               location.pathname === '/register'
-                ? 'bg-primary/10 text-primary'
+                ? 'bg-[#FF3008]/10 text-[#FF3008]'
                 : 'text-gray-700 hover:bg-gray-100'
             }`}
           >
@@ -168,7 +168,7 @@ export function Navbar() {
             to="/admin"
             className={`py-3 px-4 rounded-lg ${
               location.pathname === '/admin'
-                ? 'bg-primary/10 text-primary'
+                ? 'bg-[#FF3008]/10 text-[#FF3008]'
                 : 'text-gray-700 hover:bg-gray-100'
             }`}
           >
