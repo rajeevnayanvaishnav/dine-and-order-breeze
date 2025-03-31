@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, ShoppingCart } from 'lucide-react';
+import { Menu, X, ShoppingCart, User } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 export function Navbar() {
@@ -27,8 +27,8 @@ export function Navbar() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? 'bg-white/80 backdrop-blur-lg shadow-sm py-4'
-          : 'bg-transparent py-6'
+          ? 'bg-white shadow-sm py-3'
+          : 'bg-transparent py-4'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -36,7 +36,7 @@ export function Navbar() {
           <div className="flex items-center">
             <Link
               to="/"
-              className="text-xl font-bold flex items-center gap-2 text-gray-900"
+              className="text-2xl font-bold flex items-center gap-1 text-gray-900"
             >
               <span className="text-[#FF3008]">Door</span>Dash
             </Link>
@@ -45,42 +45,30 @@ export function Navbar() {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-1">
             <Link
-              to="/"
-              className={`nav-link ${location.pathname === '/' ? 'nav-link-active' : ''}`}
-            >
-              Home
-            </Link>
-            <Link
               to="/restaurants"
-              className={`nav-link ${
-                location.pathname === '/restaurants' ? 'nav-link-active' : ''
-              }`}
+              className="nav-link px-4 py-2 text-gray-600 hover:text-[#FF3008]"
             >
               Restaurants
             </Link>
             <Link
-              to="/login"
-              className={`nav-link ${
-                location.pathname === '/login' ? 'nav-link-active' : ''
-              }`}
+              to="/admin"
+              className="nav-link px-4 py-2 text-gray-600 hover:text-[#FF3008]"
             >
-              Login
+              Partners
+            </Link>
+            <Link
+              to="/login"
+              className="px-4 py-2 text-gray-600 hover:text-[#FF3008] font-medium"
+            >
+              Sign In
             </Link>
             <Link
               to="/register"
-              className={`nav-link ${
-                location.pathname === '/register' ? 'nav-link-active' : ''
-              }`}
+              className="ml-2"
             >
-              Register
-            </Link>
-            <Link
-              to="/admin"
-              className={`nav-link ${
-                location.pathname === '/admin' ? 'nav-link-active' : ''
-              }`}
-            >
-              Admin
+              <Button variant="outline" className="border-[#FF3008] text-[#FF3008] hover:bg-[#FF3008]/10">
+                Sign Up
+              </Button>
             </Link>
             <Link to="/cart" className="ml-3">
               <Button variant="outline" size="icon" className="relative" aria-label="Shopping cart">
@@ -94,6 +82,11 @@ export function Navbar() {
 
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center">
+            <Link to="/login" className="mr-3">
+              <Button variant="outline" size="icon" className="relative" aria-label="Account">
+                <User className="h-5 w-5" />
+              </Button>
+            </Link>
             <Link to="/cart" className="mr-3">
               <Button variant="outline" size="icon" className="relative" aria-label="Shopping cart">
                 <ShoppingCart className="h-5 w-5" />
@@ -119,11 +112,11 @@ export function Navbar() {
 
       {/* Mobile Navigation */}
       <div
-        className={`md:hidden absolute top-full left-0 right-0 bg-white/90 backdrop-blur-lg shadow-lg transition-all duration-300 ease-out-expo ${
+        className={`md:hidden absolute top-full left-0 right-0 bg-white shadow-lg transition-all duration-300 ease-out-expo ${
           isMobileMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4 pointer-events-none'
         }`}
       >
-        <nav className="flex flex-col py-4 px-6 space-y-2">
+        <nav className="flex flex-col py-4 px-6 space-y-1">
           <Link
             to="/"
             className={`py-3 px-4 rounded-lg ${
@@ -152,7 +145,7 @@ export function Navbar() {
                 : 'text-gray-700 hover:bg-gray-100'
             }`}
           >
-            Login
+            Sign In
           </Link>
           <Link
             to="/register"
@@ -162,7 +155,7 @@ export function Navbar() {
                 : 'text-gray-700 hover:bg-gray-100'
             }`}
           >
-            Register
+            Sign Up
           </Link>
           <Link
             to="/admin"
@@ -172,7 +165,7 @@ export function Navbar() {
                 : 'text-gray-700 hover:bg-gray-100'
             }`}
           >
-            Admin
+            Partners
           </Link>
         </nav>
       </div>
