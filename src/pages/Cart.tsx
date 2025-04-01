@@ -15,7 +15,8 @@ const Cart = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, []);
+    console.log("Cart items on load:", cartItems);
+  }, [cartItems]);
 
   const handleRemoveItem = (id: number) => {
     removeItem(id);
@@ -179,6 +180,8 @@ const Cart = () => {
   );
 
   console.log("Cart items:", cartItems);
+  console.log("Cart total items:", totalItems);
+  console.log("Cart total price:", totalPrice);
 
   return (
     <div className="flex flex-col min-h-screen">

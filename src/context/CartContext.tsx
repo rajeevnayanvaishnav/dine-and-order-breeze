@@ -29,7 +29,9 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     const savedCart = localStorage.getItem('cart');
     if (savedCart) {
       try {
-        setItems(JSON.parse(savedCart));
+        const parsedCart = JSON.parse(savedCart);
+        console.log("Loaded cart from storage:", parsedCart);
+        setItems(parsedCart);
       } catch (error) {
         console.error('Failed to parse saved cart', error);
         localStorage.removeItem('cart');
@@ -39,10 +41,12 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
 
   // Save cart to localStorage whenever it changes
   useEffect(() => {
+    console.log("Saving cart to storage:", items);
     localStorage.setItem('cart', JSON.stringify(items));
   }, [items]);
 
   const addItem = (item: Omit<CartItem, 'quantity'>) => {
+    console.log("Adding item to cart:", item);
     setItems(prevItems => {
       // Check if item already exists in cart
       const existingItemIndex = prevItems.findIndex(i => i.id === item.id);
@@ -54,19 +58,24 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
           ...updatedItems[existingItemIndex],
           quantity: updatedItems[existingItemIndex].quantity + 1
         };
+        console.log("Updated cart (item exists):", updatedItems);
         return updatedItems;
       } else {
         // Item doesn't exist, add to cart with quantity 1
-        return [...prevItems, { ...item, quantity: 1 }];
+        const newItems = [...prevItems, { ...item, quantity: 1 }];
+        console.log("Updated cart (new item):", newItems);
+        return newItems;
       }
     });
   };
 
   const removeItem = (itemId: number) => {
+    console.log("Removing item from cart:", itemId);
     setItems(prevItems => prevItems.filter(item => item.id !== itemId));
   };
 
   const updateQuantity = (itemId: number, quantity: number) => {
+    console.log("Updating item quantity:", itemId, quantity);
     if (quantity <= 0) {
       removeItem(itemId);
       return;
@@ -80,6 +89,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const clearCart = () => {
+    console.log("Clearing cart");
     setItems([]);
   };
 

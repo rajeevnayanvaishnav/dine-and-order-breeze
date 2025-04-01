@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ShoppingCart, User } from 'lucide-react';
@@ -22,6 +23,11 @@ export function Navbar() {
   useEffect(() => {
     setIsMobileMenuOpen(false);
   }, [location.pathname]);
+
+  // Force re-render when totalItems changes
+  useEffect(() => {
+    console.log("Cart updated in Navbar, total items:", totalItems);
+  }, [totalItems]);
 
   return (
     <header
@@ -73,9 +79,11 @@ export function Navbar() {
             <Link to="/cart" className="ml-3">
               <Button variant="outline" size="icon" className="relative" aria-label="Shopping cart">
                 <ShoppingCart className="h-5 w-5" />
-                <span className="absolute -top-2 -right-2 bg-[#FF3008] text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
-                  {totalItems}
-                </span>
+                {totalItems > 0 && (
+                  <span className="absolute -top-2 -right-2 bg-[#FF3008] text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
+                    {totalItems}
+                  </span>
+                )}
               </Button>
             </Link>
           </nav>
@@ -90,9 +98,11 @@ export function Navbar() {
             <Link to="/cart" className="mr-3">
               <Button variant="outline" size="icon" className="relative" aria-label="Shopping cart">
                 <ShoppingCart className="h-5 w-5" />
-                <span className="absolute -top-2 -right-2 bg-[#FF3008] text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
-                  {totalItems}
-                </span>
+                {totalItems > 0 && (
+                  <span className="absolute -top-2 -right-2 bg-[#FF3008] text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
+                    {totalItems}
+                  </span>
+                )}
               </Button>
             </Link>
             <button
