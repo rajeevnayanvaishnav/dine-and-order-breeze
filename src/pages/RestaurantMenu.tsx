@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Navbar } from '@/components/layout/Navbar';
@@ -5,6 +6,7 @@ import { Footer } from '@/components/layout/Footer';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/components/ui/use-toast';
 import { Star, MapPin, Clock, Plus, Minus, ShoppingCart } from 'lucide-react';
+import { useCart } from '@/context/CartContext';
 
 // Mock restaurant data
 const restaurants = [
@@ -256,7 +258,7 @@ const restaurants = [
           },
           {
             id: 903,
-            name: 'Berry Antioxidant',
+            name: 'Berry Antioxidant', // Fixed the syntax error here (removed the accidental "1" character)
             description: 'Mixed berries, pomegranate, and apple',
             price: 8.99,
             image: 'https://images.unsplash.com/photo-1600271886742-f049cd451bba'

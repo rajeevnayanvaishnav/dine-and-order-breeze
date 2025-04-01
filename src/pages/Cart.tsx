@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Trash2, Plus, Minus, ArrowLeft, ShoppingBag } from 'lucide-react';
@@ -5,46 +6,12 @@ import { Button } from '@/components/ui/button';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
 import { BlurContainer } from '@/components/ui/BlurContainer';
-
-// Mock cart data
-type CartItem = {
-  id: number;
-  name: string;
-  price: number;
-  quantity: number;
-  restaurantId: number;
-  restaurantName: string;
-  removing?: boolean;
-};
+import { useCart } from '@/context/CartContext';
+import { toast } from "sonner";
 
 const Cart = () => {
   const navigate = useNavigate();
-  const [cartItems, setCartItems] = useState<CartItem[]>([
-    {
-      id: 1,
-      name: 'Margherita Pizza',
-      price: 12.99,
-      quantity: 1,
-      restaurantId: 1,
-      restaurantName: 'The Gourmet Kitchen',
-    },
-    {
-      id: 2,
-      name: 'Caesar Salad',
-      price: 8.99,
-      quantity: 1,
-      restaurantId: 1,
-      restaurantName: 'The Gourmet Kitchen',
-    },
-    {
-      id: 3,
-      name: 'Tiramisu',
-      price: 6.99,
-      quantity: 2,
-      restaurantId: 1,
-      restaurantName: 'The Gourmet Kitchen',
-    },
-  ]);
+  const { items: cartItems, removeItem, updateQuantity, totalItems, totalPrice } = useCart();
   const [isLoading, setIsLoading] = useState(false);
 
   // Scroll to top on component mount
@@ -53,26 +20,13 @@ const Cart = () => {
   }, []);
 
   const handleRemoveItem = (id: number) => {
-    setCartItems((prevItems) =>
-      prevItems.map((item) =>
-        item.id === id ? { ...item, removing: true } : item
-      )
-    );
-
-    // Simulate API call delay
-    setTimeout(() => {
-      setCartItems((prevItems) => prevItems.filter((item) => item.id !== id));
-    }, 300);
+    removeItem(id);
+    toast.success("Item removed from cart");
   };
 
   const handleUpdateQuantity = (id: number, newQuantity: number) => {
     if (newQuantity < 1) return;
-
-    setCartItems((prevItems) =>
-      prevItems.map((item) =>
-        item.id === id ? { ...item, quantity: newQuantity } : item
-      )
-    );
+    updateQuantity(id, newQuantity);
   };
 
   const handleCheckout = () => {
@@ -85,15 +39,8 @@ const Cart = () => {
     }, 1500);
   };
 
-  const calculateSubtotal = () => {
-    return cartItems.reduce(
-      (total, item) => total + item.price * item.quantity,
-      0
-    );
-  };
-
   const calculateTax = () => {
-    return calculateSubtotal() * 0.08; // 8% tax
+    return totalPrice * 0.08; // 8% tax
   };
 
   const calculateDeliveryFee = () => {
@@ -101,7 +48,7 @@ const Cart = () => {
   };
 
   const calculateTotal = () => {
-    return calculateSubtotal() + calculateTax() + calculateDeliveryFee();
+    return totalPrice + calculateTax() + calculateDeliveryFee();
   };
 
   const formatCurrency = (amount: number) => {
@@ -126,16 +73,19 @@ const Cart = () => {
     </div>
   );
 
-  const renderCartItem = (item: CartItem) => (
+  const renderCartItem = (item: {
+    id: number;
+    name: string;
+    price: number;
+    quantity: number;
+    restaurantId: number;
+  }) => (
     <div
       key={item.id}
-      className={`flex flex-col sm:flex-row items-start sm:items-center justify-between py-6 border-b border-gray-100 transition-opacity duration-300 ${
-        item.removing ? 'opacity-50' : ''
-      }`}
+      className="flex flex-col sm:flex-row items-start sm:items-center justify-between py-6 border-b border-gray-100 transition-opacity duration-300"
     >
       <div className="flex-grow mb-4 sm:mb-0">
         <h3 className="text-lg font-medium text-gray-900">{item.name}</h3>
-        <p className="text-sm text-gray-500">{item.restaurantName}</p>
       </div>
 
       <div className="flex items-center gap-4 w-full sm:w-auto">
@@ -201,7 +151,7 @@ const Cart = () => {
       <div className="space-y-3 mb-6">
         <div className="flex justify-between">
           <span className="text-gray-600">Subtotal</span>
-          <span className="font-medium">{formatCurrency(calculateSubtotal())}</span>
+          <span className="font-medium">{formatCurrency(totalPrice)}</span>
         </div>
         <div className="flex justify-between">
           <span className="text-gray-600">Tax</span>
