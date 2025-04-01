@@ -2,7 +2,7 @@
 
 ## Project Info
 
-**URL:** [https://dine-and-order-breeze.vercel.app/](https://dine-and-order-breeze.vercel.app/)
+**URL:** [https://dine-and-order-breeze.vercel.app/](https://dine-and-order-breeze-rho.vercel.app/)
 
 ## How Can I Edit This Code?
 
