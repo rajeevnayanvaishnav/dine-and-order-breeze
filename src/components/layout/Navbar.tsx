@@ -1,13 +1,14 @@
-
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ShoppingCart, User } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useCart } from '@/context/CartContext';
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
+  const { totalItems } = useCart();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -18,7 +19,6 @@ export function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close mobile menu when route changes
   useEffect(() => {
     setIsMobileMenuOpen(false);
   }, [location.pathname]);
@@ -74,7 +74,7 @@ export function Navbar() {
               <Button variant="outline" size="icon" className="relative" aria-label="Shopping cart">
                 <ShoppingCart className="h-5 w-5" />
                 <span className="absolute -top-2 -right-2 bg-[#FF3008] text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
-                  0
+                  {totalItems}
                 </span>
               </Button>
             </Link>
@@ -91,7 +91,7 @@ export function Navbar() {
               <Button variant="outline" size="icon" className="relative" aria-label="Shopping cart">
                 <ShoppingCart className="h-5 w-5" />
                 <span className="absolute -top-2 -right-2 bg-[#FF3008] text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
-                  0
+                  {totalItems}
                 </span>
               </Button>
             </Link>

@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Trash2, Plus, Minus, ArrowLeft, ShoppingBag } from 'lucide-react';
@@ -14,7 +13,6 @@ const Cart = () => {
   const { items: cartItems, removeItem, updateQuantity, totalItems, totalPrice } = useCart();
   const [isLoading, setIsLoading] = useState(false);
 
-  // Scroll to top on component mount
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -32,7 +30,6 @@ const Cart = () => {
   const handleCheckout = () => {
     setIsLoading(true);
 
-    // Simulate API call delay
     setTimeout(() => {
       setIsLoading(false);
       navigate('/order-confirmation');
@@ -180,6 +177,8 @@ const Cart = () => {
       </Button>
     </BlurContainer>
   );
+
+  console.log("Cart items:", cartItems);
 
   return (
     <div className="flex flex-col min-h-screen">
